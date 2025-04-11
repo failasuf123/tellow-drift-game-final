@@ -1,0 +1,54 @@
+[gd_scene load_steps=5 format=3 uid="uid://bbr3t4i8pmxpm"]
+
+[ext_resource type="Texture2D" uid="uid://c83pug1g1rc5p" path="res://assets/story/lose.png" id="1_nr2tu"]
+[ext_resource type="AudioStream" uid="uid://xwu5ijfr55i1" path="res://sound/whoosh-drum-hits.wav" id="2_y7jm6"]
+[ext_resource type="Script" path="res://scenes/button_try_again_lvl_2.gd" id="3_tsf7x"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_qwt2t"]
+font_size = 96
+font_color = Color(0.994546, 0.384918, 0.477191, 1)
+
+[node name="lose_lvl_2" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_left = 91.0
+offset_top = -5.0
+offset_right = 1693.0
+offset_bottom = 1281.0
+scale = Vector2(0.611, 0.5)
+texture = ExtResource("1_nr2tu")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+z_index = -1
+offset_right = 1148.0
+offset_bottom = 644.0
+color = Color(0.00820202, 0.00820202, 0.00820202, 1)
+
+[node name="Label_Title" type="Label" parent="."]
+offset_left = 207.0
+offset_top = 183.0
+offset_right = 909.0
+offset_bottom = 315.0
+theme_override_font_sizes/font_size = 64
+text = "You Got Killed!!"
+label_settings = SubResource("LabelSettings_qwt2t")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_y7jm6")
+autoplay = true
+
+[node name="ButtonTryAgainLvl2" type="Button" parent="."]
+layout_mode = 0
+offset_left = 446.0
+offset_top = 395.0
+offset_right = 652.0
+offset_bottom = 464.0
+theme_override_font_sizes/font_size = 44
+text = "Try Again"
+script = ExtResource("3_tsf7x")

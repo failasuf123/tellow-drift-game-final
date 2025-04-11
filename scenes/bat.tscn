@@ -1,0 +1,97 @@
+[gd_scene load_steps=14 format=3 uid="uid://xh0ts1jkqyw1"]
+
+[ext_resource type="Script" path="res://scenes/bat.gd" id="1_kpos7"]
+[ext_resource type="Texture2D" uid="uid://ckcgrrjvbhjxn" path="res://assets/character/BatMovement.png" id="2_khr61"]
+[ext_resource type="AudioStream" uid="uid://dha300cody5xu" path="res://sound/bat-wing-flap.wav" id="3_pudmb"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0rxgf"]
+atlas = ExtResource("2_khr61")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vvksl"]
+atlas = ExtResource("2_khr61")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kwx7k"]
+atlas = ExtResource("2_khr61")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tse7t"]
+atlas = ExtResource("2_khr61")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mpwjj"]
+atlas = ExtResource("2_khr61")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_whrh1"]
+atlas = ExtResource("2_khr61")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_fbqet"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0rxgf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vvksl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kwx7k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tse7t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mpwjj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_whrh1")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_hkl4o"]
+radius = 176.139
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_2u87n"]
+radius = 15.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_slkt7"]
+radius = 20.6155
+
+[node name="bat" type="CharacterBody2D"]
+z_index = 2
+scale = Vector2(0.2, 0.2)
+script = ExtResource("1_kpos7")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_fbqet")
+autoplay = "default"
+
+[node name="detection_area" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="detection_area"]
+shape = SubResource("CircleShape2D_hkl4o")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-9.09495e-13, -5)
+scale = Vector2(0.999999, 0.999999)
+shape = SubResource("CircleShape2D_2u87n")
+
+[node name="WingFlap" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_pudmb")
+volume_db = 15.0
+
+[node name="batHit_area" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="batHit_area"]
+shape = SubResource("CircleShape2D_slkt7")
+
+[connection signal="body_entered" from="detection_area" to="." method="_on_detection_area_body_entered"]
+[connection signal="body_exited" from="detection_area" to="." method="_on_detection_area_body_exited"]

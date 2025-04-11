@@ -1,0 +1,62 @@
+[gd_scene load_steps=9 format=3 uid="uid://pyrn5t60eq66"]
+
+[ext_resource type="Script" path="res://scenes/people.gd" id="1_tiqvj"]
+[ext_resource type="Texture2D" uid="uid://bqs76va162oyh" path="res://assets/character/free_character_nude.png" id="2_istol"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_17vnp"]
+atlas = ExtResource("2_istol")
+region = Rect2(16, 0, 16, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5j61l"]
+atlas = ExtResource("2_istol")
+region = Rect2(32, 0, 16, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wcqyk"]
+atlas = ExtResource("2_istol")
+region = Rect2(0, 0, 16, 20)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_rdhs8"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_17vnp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5j61l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wcqyk")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 3.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_da3jm"]
+size = Vector2(14, 17)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_mfhgf"]
+radius = 16.0
+
+[node name="People" type="CharacterBody2D"]
+script = ExtResource("1_tiqvj")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -4)
+sprite_frames = SubResource("SpriteFrames_rdhs8")
+animation = &"idle"
+autoplay = "idle"
+frame_progress = 0.777668
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -2)
+shape = SubResource("RectangleShape2D_da3jm")
+
+[node name="pickup_area" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="pickup_area"]
+shape = SubResource("CircleShape2D_mfhgf")
+
+[node name="RespawnTimer" type="Timer" parent="."]
+
+[connection signal="body_entered" from="pickup_area" to="." method="_on_pickup_area_body_entered"]

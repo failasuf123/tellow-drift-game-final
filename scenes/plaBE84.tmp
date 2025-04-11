@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://d3tbkwfpnx1cy"]
+
+[ext_resource type="Script" path="res://scenes/player.gd" id="1_a2yu2"]
+[ext_resource type="Texture2D" uid="uid://dktfb7kbi3tbo" path="res://assets/2d-topdown-car/CARS/Sport/sport_yellow.png" id="1_lm8op"]
+[ext_resource type="AudioStream" uid="uid://cx6rfxqimpnla" path="res://sound/car-driving.wav" id="3_6ick7"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_btcke"]
+size = Vector2(31, 71)
+
+[node name="player" type="CharacterBody2D"]
+scale = Vector2(0.209192, 0.20221)
+script = ExtResource("1_a2yu2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, -0.5)
+rotation = 1.5708
+shape = SubResource("RectangleShape2D_btcke")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+rotation = 1.5708
+texture = ExtResource("1_lm8op")
+
+[node name="DrivingSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_6ick7")

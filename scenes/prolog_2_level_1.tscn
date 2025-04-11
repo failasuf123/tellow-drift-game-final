@@ -1,0 +1,62 @@
+[gd_scene load_steps=5 format=3 uid="uid://b4l0t0xlkqujd"]
+
+[ext_resource type="Texture2D" uid="uid://5ya3suph3ro3" path="res://assets/story/intro2.png" id="1_n266r"]
+[ext_resource type="Script" path="res://scenes/button_next2_lvl1.gd" id="2_r8o7b"]
+[ext_resource type="AudioStream" uid="uid://bwc6hqcf8b55q" path="res://sound/intro-monster-howl.wav" id="3_b345c"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_ykis3"]
+font_size = 24
+outline_size = 2
+shadow_size = 10
+
+[node name="Prolog2Level1" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="."]
+z_index = -1
+layout_mode = 0
+offset_right = 1148.0
+offset_bottom = 644.0
+color = Color(0.00820202, 0.00820202, 0.00820202, 1)
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 91.0
+offset_top = -5.0
+offset_right = 1693.0
+offset_bottom = 1281.0
+scale = Vector2(0.611, 0.5)
+texture = ExtResource("1_n266r")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 134.0
+offset_top = 335.0
+offset_right = 1050.0
+offset_bottom = 554.0
+text = "Langit terbelah.
+Sebuah portal asing terbuka, dan dari sana, makhluk 
+monster kelelawar raksasa menyerbu kota. Kedamaian berubah menjadi teror.
+Semua jalan keluar kota terblokir karena kekacauan
+
+Hanya kamu yang bisa menyelamatkaan semua penduduk kota"
+label_settings = SubResource("LabelSettings_ykis3")
+
+[node name="Button_next2" type="Button" parent="."]
+layout_mode = 0
+offset_left = 960.0
+offset_top = 41.0
+offset_right = 1079.0
+offset_bottom = 94.0
+theme_override_font_sizes/font_size = 32
+text = "Next ->"
+script = ExtResource("2_r8o7b")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_b345c")
+autoplay = true

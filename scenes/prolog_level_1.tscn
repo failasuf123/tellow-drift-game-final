@@ -1,0 +1,59 @@
+[gd_scene load_steps=5 format=3 uid="uid://cdm7wig52h2eq"]
+
+[ext_resource type="Script" path="res://scenes/button_next1_lvl1.gd" id="1_5cll0"]
+[ext_resource type="Texture2D" uid="uid://8pouorn8ycv2" path="res://assets/story/intro1.png" id="1_248lq"]
+[ext_resource type="AudioStream" uid="uid://6yxe7ph8a6an" path="res://sound/intro-crowded-cheer.wav" id="3_464y2"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_us5sv"]
+font_size = 24
+outline_size = 2
+shadow_size = 10
+
+[node name="PrologLevel1" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="."]
+z_index = -1
+layout_mode = 0
+offset_right = 1148.0
+offset_bottom = 644.0
+color = Color(0.00820202, 0.00820202, 0.00820202, 1)
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 91.0
+offset_top = -5.0
+offset_right = 1693.0
+offset_bottom = 1281.0
+scale = Vector2(0.611, 0.5)
+texture = ExtResource("1_248lq")
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 939.0
+offset_top = 30.0
+offset_right = 1058.0
+offset_bottom = 83.0
+theme_override_font_sizes/font_size = 32
+text = "Next ->"
+script = ExtResource("1_5cll0")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 166.0
+offset_top = 423.0
+offset_right = 1058.0
+offset_bottom = 531.0
+text = "Di negeri Gearshift, kamu adalah pembalap ternama.
+Dengan mobil kuningmu, kamu menaklukkan setiap lintasan dan hati rakyat.
+Kota bersinar, sorak sorai menggema—kau adalah pahlawan kecepatan."
+label_settings = SubResource("LabelSettings_us5sv")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_464y2")
+autoplay = true

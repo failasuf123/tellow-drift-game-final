@@ -1,0 +1,56 @@
+[gd_scene load_steps=5 format=3 uid="uid://dahujvtlmottf"]
+
+[ext_resource type="Script" path="res://scenes/button_back_to_main_menu.gd" id="1_70x2o"]
+[ext_resource type="Texture2D" uid="uid://dpqbxwojalr5m" path="res://assets/story/victory-ending.png" id="2_r408q"]
+[ext_resource type="AudioStream" uid="uid://dg2pswfu1svia" path="res://sound/medieval-fanfare.wav" id="4_iwbyj"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_5i4n0"]
+font_size = 24
+outline_size = 2
+shadow_size = 10
+
+[node name="Ending" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="."]
+z_index = -1
+offset_right = 1148.0
+offset_bottom = 644.0
+color = Color(0.00820202, 0.00820202, 0.00820202, 1)
+
+[node name="TextureRect2" type="TextureRect" parent="."]
+offset_left = 124.0
+offset_top = 28.0
+offset_right = 1643.0
+offset_bottom = 1226.0
+scale = Vector2(0.611, 0.5)
+texture = ExtResource("2_r408q")
+
+[node name="button_BackToMainMenu" type="Button" parent="."]
+layout_mode = 0
+offset_left = 879.0
+offset_top = 575.0
+offset_right = 1106.0
+offset_bottom = 628.0
+theme_override_font_sizes/font_size = 32
+text = "Main Menu -> "
+script = ExtResource("1_70x2o")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_iwbyj")
+autoplay = true
+
+[node name="Label" type="Label" parent="."]
+offset_left = 163.0
+offset_top = 45.0
+offset_right = 1079.0
+offset_bottom = 264.0
+text = "Dengan kecepatan luar biasa dan keberanian yang tak tergoyahkan, 
+Kamu pembalap legendaris, berhasil menyelamatkan kota. 
+Warga bersorak, dan mobil kuning itu kembali menjadi simbol harapan"
+label_settings = SubResource("LabelSettings_5i4n0")
